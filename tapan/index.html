@@ -1671,78 +1671,63 @@
           </div>
 
           <!-- Contact Form -->
-          <div class="reveal" style="transition-delay: 0.1s">
+       <div class="reveal" style="transition-delay: 0.1s">
+
   <form
-    id="contactForm"
     name="contact"
     method="POST"
     data-netlify="true"
     netlify-honeypot="bot-field"
-    action="/thank-you"
+    action="/success.html"
     class="card p-8"
   >
-    <!-- Netlify required hidden fields -->
-    <input type="hidden" name="form-name" value="contact" />
+
+    <!-- Netlify required hidden field -->
+    <input type="hidden" name="form-name" value="contact">
 
     <!-- spam protection -->
-    <p hidden>
-      <label>Don’t fill this out: <input name="bot-field" /></label>
+    <p class="hidden">
+      <label>Don’t fill this out:
+        <input name="bot-field">
+      </label>
     </p>
 
     <div class="grid md:grid-cols-2 gap-6 mb-6">
       <div>
         <label class="block text-sm font-medium mb-2" for="name">Your Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
+        <input type="text" id="name" name="name"
           class="form-input"
-          placeholder="John Doe"
-          required
-        />
+          placeholder="John Doe" required>
       </div>
 
       <div>
         <label class="block text-sm font-medium mb-2" for="email">Your Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
+        <input type="email" id="email" name="email"
           class="form-input"
-          placeholder="john@example.com"
-          required
-        />
+          placeholder="john@example.com" required>
       </div>
     </div>
 
     <div class="mb-6">
       <label class="block text-sm font-medium mb-2" for="subject">Subject</label>
-      <input
-        type="text"
-        id="subject"
-        name="subject"
+      <input type="text" id="subject" name="subject"
         class="form-input"
-        placeholder="Project Inquiry"
-        required
-      />
+        placeholder="Project Inquiry" required>
     </div>
 
     <div class="mb-6">
       <label class="block text-sm font-medium mb-2" for="message">Message</label>
-      <textarea
-        id="message"
-        name="message"
-        rows="5"
+      <textarea id="message" name="message" rows="5"
         class="form-input resize-none"
-        placeholder="Tell me about your project..."
-        required
-      ></textarea>
+        placeholder="Tell me about your project..." required></textarea>
     </div>
 
     <button type="submit" class="btn-primary w-full">
       <span>Send Message</span>
     </button>
+
   </form>
+
 </div>
         </div>
       </div>
