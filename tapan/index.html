@@ -1672,7 +1672,7 @@
 
           <!-- Contact Form -->
           <div class="reveal" style="transition-delay: 0.1s">
-            <form id="contactForm" class="card p-8">
+            <form action="https://formspree.io/f/xykdoojv" method="POST" class="card p-8">
               <div class="grid md:grid-cols-2 gap-6 mb-6">
                 <input
                   type="text"
@@ -1761,16 +1761,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const subject = document.getElementById("subject").value.trim();
     const message = document.getElementById("message").value.trim();
 
+    // validation
+    if (!name || !email || !subject || !message) {
+      alert("Please fill all fields");
+      return;
+    }
+
     const phone = "918154890029";
 
     const text = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`
+      `Hello Tapan,%0A%0AName: ${name}%0AEmail: ${email}%0ASubject: ${subject}%0AMessage: ${message}`
     );
 
     const url = `https://wa.me/${phone}?text=${text}`;
 
-    // 🔥 IMPORTANT FIX (popup blocker bypass)
-    window.location.href = url;
+    // success message
+    alert("Redirecting to WhatsApp...");
+
+    // open whatsapp
+    window.open(url, "_blank");
+
+    // reset form
+    form.reset();
   });
 });
 </script>
