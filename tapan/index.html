@@ -1751,7 +1751,6 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("contactForm");
-
   if (!form) return;
 
   form.addEventListener("submit", function (e) {
@@ -1762,18 +1761,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const subject = document.getElementById("subject").value.trim();
     const message = document.getElementById("message").value.trim();
 
-    // ⚠️ tamaro WhatsApp number (country code sathe)
     const phone = "918154890029";
 
-    // ✅ proper formatted message
     const text = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`
     );
 
     const url = `https://wa.me/${phone}?text=${text}`;
 
-    // ✅ open WhatsApp
-    window.open(url, "_blank");
+    // 🔥 IMPORTANT FIX (popup blocker bypass)
+    window.location.href = url;
   });
 });
 </script>
