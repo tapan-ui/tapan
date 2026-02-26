@@ -177,6 +177,8 @@
         padding: 14px 32px;
         border-radius: 8px;
         overflow: hidden;
+        border: none;
+        cursor: pointer;
         transition:
           transform 0.3s ease,
           box-shadow 0.3s ease;
@@ -211,6 +213,7 @@
         padding: 12px 28px;
         border-radius: 8px;
         transition: all 0.3s ease;
+        display: inline-block;
       }
 
       .btn-outline:hover {
@@ -1672,44 +1675,46 @@
 
           <!-- Contact Form -->
           <div class="reveal" style="transition-delay: 0.1s">
-            <form action="https://formspree.io/f/xykdoojv" method="POST" class="card p-8">
+            <form id="contactForm" class="card p-8">
               <div class="grid md:grid-cols-2 gap-6 mb-6">
-               <input
-  type="text"
-  id="name"
-  name="name"
-  required
-  class="form-input"
-  placeholder="John Doe"
-/>
-               <input
-  type="email"
-  id="email"
-  name="email"
-  required
-  class="form-input"
-  placeholder="john@example.com"
-/>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="form-input"
+                  placeholder="Your Name"
+                />
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="form-input"
+                  placeholder="Your Email"
+                />
               </div>
 
-            <input
-  type="text"
-  id="subject"
-  name="subject"
-  required
-  class="form-input"
-  placeholder="Subject"
-/>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                required
+                class="form-input mb-6"
+                placeholder="Subject"
+              />
 
-         <textarea
-  id="message"
-  name="message"
-  required
-  class="form-input"
-></textarea>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="5"
+                class="form-input resize-none mb-6"
+                placeholder="Your Message"
+              ></textarea>
 
               <button type="submit" class="btn-primary w-full">
-                <span>Send Message</span>
+                <span>Send Message via WhatsApp</span>
               </button>
             </form>
           </div>
@@ -1751,46 +1756,9 @@
         </div>
       </div>
     </footer>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("contactForm");
-  if (!form) return;
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const subject = document.getElementById("subject").value.trim();
-    const message = document.getElementById("message").value.trim();
-
-    // validation
-    if (!name || !email || !subject || !message) {
-      alert("Please fill all fields");
-      return;
-    }
-
-    const phone = "918154890029";
-
-    const text = encodeURIComponent(
-      `Hello Tapan,%0A%0AName: ${name}%0AEmail: ${email}%0ASubject: ${subject}%0AMessage: ${message}`
-    );
-
-    const url = `https://wa.me/${phone}?text=${text}`;
-
-    // success message
-    alert("Redirecting to WhatsApp...");
-
-    // open whatsapp
-    window.open(url, "_blank");
-
-    // reset form
-    form.reset();
-  });
-});
-</script>
+    <!-- JavaScript -->
     <script>
-    
       // Initialize all elements first
       const navbar = document.getElementById("navbar");
       const mobileMenu = document.getElementById("mobileMenu");
@@ -1878,7 +1846,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           });
         },
-        { threshold: 0.5 },
+        { threshold: 0.5 }
       );
 
       const statsSection = document.querySelector("#hero .grid");
@@ -1911,7 +1879,7 @@ document.addEventListener("DOMContentLoaded", function () {
             b.classList.remove(
               "active",
               "bg-[var(--accent)]",
-              "text-[var(--bg)]",
+              "text-[var(--bg)]"
             );
             b.classList.add("bg-[var(--card)]");
           });
@@ -1940,7 +1908,7 @@ document.addEventListener("DOMContentLoaded", function () {
             b.classList.remove(
               "active",
               "bg-[var(--accent)]",
-              "text-[var(--bg)]",
+              "text-[var(--bg)]"
             );
             b.classList.add("bg-[var(--card)]");
           });
@@ -1964,7 +1932,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!particlesContainer) return;
 
         const prefersReducedMotion = window.matchMedia(
-          "(prefers-reduced-motion: reduce)",
+          "(prefers-reduced-motion: reduce)"
         ).matches;
         if (prefersReducedMotion) return;
 
@@ -2011,6 +1979,43 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
       });
+
+      // ============ WHATSAPP CONTACT FORM ============
+      const contactForm = document.getElementById("contactForm");
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const subject = document.getElementById("subject").value.trim();
+          const message = document.getElementById("message").value.trim();
+
+          // Validation
+          if (!name || !email || !subject || !message) {
+            alert("Please fill in all fields");
+            return;
+          }
+
+          // WhatsApp Number (India format without +)
+          const phone = "918154890029";
+
+          // Create message text with proper line breaks
+          const text = `Hello Tapan,\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`;
+
+          // Encode the text for URL
+          const encodedText = encodeURIComponent(text);
+
+          // Create WhatsApp URL
+          const url = `https://wa.me/${phone}?text=${encodedText}`;
+
+          // Open WhatsApp in new tab
+          window.open(url, "_blank");
+
+          // Reset form
+          contactForm.reset();
+        });
+      }
     </script>
   </body>
 </html>
