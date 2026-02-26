@@ -1674,36 +1674,39 @@
           <div class="reveal" style="transition-delay: 0.1s">
             <form action="https://formspree.io/f/xykdoojv" method="POST" class="card p-8">
               <div class="grid md:grid-cols-2 gap-6 mb-6">
-                <input
-                  type="text"
-                  id="name"
-                  required
-                  class="form-input"
-                  placeholder="John Doe"
-                />
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  class="form-input"
-                  placeholder="john@example.com"
-                />
+               <input
+  type="text"
+  id="name"
+  name="name"
+  required
+  class="form-input"
+  placeholder="John Doe"
+/>
+               <input
+  type="email"
+  id="email"
+  name="email"
+  required
+  class="form-input"
+  placeholder="john@example.com"
+/>
               </div>
 
-              <input
-                type="text"
-                id="subject"
-                required
-                class="form-input mb-6"
-                placeholder="Subject"
-              />
+            <input
+  type="text"
+  id="subject"
+  name="subject"
+  required
+  class="form-input"
+  placeholder="Subject"
+/>
 
-              <textarea
-                id="message"
-                required
-                rows="5"
-                class="form-input resize-none mb-6"
-              ></textarea>
+         <textarea
+  id="message"
+  name="message"
+  required
+  class="form-input"
+></textarea>
 
               <button type="submit" class="btn-primary w-full">
                 <span>Send Message</span>
