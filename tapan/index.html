@@ -1757,21 +1757,22 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const subject = document.getElementById("subject").value;
-    const message = document.getElementById("message").value;
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const message = document.getElementById("message").value.trim();
 
+    // ⚠️ tamaro WhatsApp number (country code sathe)
     const phone = "918154890029";
 
-    const text =
-      `Name: ${name}%0A` +
-      `Email: ${email}%0A` +
-      `Subject: ${subject}%0A` +
-      `Message: ${message}`;
+    // ✅ proper formatted message
+    const text = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`
+    );
 
     const url = `https://wa.me/${phone}?text=${text}`;
 
+    // ✅ open WhatsApp
     window.open(url, "_blank");
   });
 });
