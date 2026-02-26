@@ -1671,10 +1671,11 @@
           </div>
 
           <!-- Contact Form -->
-       <div class="reveal" style="transition-delay: 0.1s">
+      <div class="reveal" style="transition-delay: 0.1s">
 
   <form
     name="contact"
+    id="contactForm"
     method="POST"
     data-netlify="true"
     netlify-honeypot="bot-field"
@@ -1683,12 +1684,12 @@
   >
 
     <!-- Netlify required hidden field -->
-    <input type="hidden" name="form-name" value="contact">
+    <input type="hidden" name="form-name" value="contact" />
 
     <!-- spam protection -->
     <p class="hidden">
       <label>Don’t fill this out:
-        <input name="bot-field">
+        <input name="bot-field" />
       </label>
     </p>
 
@@ -1697,14 +1698,14 @@
         <label class="block text-sm font-medium mb-2" for="name">Your Name</label>
         <input type="text" id="name" name="name"
           class="form-input"
-          placeholder="John Doe" required>
+          placeholder="John Doe" required />
       </div>
 
       <div>
         <label class="block text-sm font-medium mb-2" for="email">Your Email</label>
         <input type="email" id="email" name="email"
           class="form-input"
-          placeholder="john@example.com" required>
+          placeholder="john@example.com" required />
       </div>
     </div>
 
@@ -1712,7 +1713,7 @@
       <label class="block text-sm font-medium mb-2" for="subject">Subject</label>
       <input type="text" id="subject" name="subject"
         class="form-input"
-        placeholder="Project Inquiry" required>
+        placeholder="Project Inquiry" required />
     </div>
 
     <div class="mb-6">
@@ -1937,22 +1938,7 @@
         });
       });
 
-      // Form submission
-      const contactForm = document.getElementById("contactForm");
-      if (contactForm) {
-        contactForm.addEventListener("submit", (e) => {
-          const btn = contactForm.querySelector('button[type="submit"]');
-          const originalText = btn.innerHTML;
-          btn.innerHTML = "<span>Message Sent!</span>";
-          btn.style.background = "linear-gradient(135deg, #10b981, #059669)";
-
-          setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.style.background = "";
-            contactForm.reset();
-          }, 3000);
-        });
-      }
+ 
 
       // Create floating particles
       function createParticles() {
